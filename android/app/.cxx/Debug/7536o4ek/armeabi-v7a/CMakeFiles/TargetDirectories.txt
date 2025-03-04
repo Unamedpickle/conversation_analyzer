@@ -1,0 +1,2 @@
+C:/Users/Allen Gu/Documents/GitHub/conversation_analyzer/android/app/.cxx/Debug/7536o4ek/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Allen Gu/Documents/GitHub/conversation_analyzer/android/app/.cxx/Debug/7536o4ek/armeabi-v7a/CMakeFiles/rebuild_cache.dir
