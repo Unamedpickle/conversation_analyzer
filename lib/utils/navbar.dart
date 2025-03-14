@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../screens/home.dart';
+import '../screens/home_screen.dart';
+import '../screens/recordings_screen.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -13,7 +14,7 @@ class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
 
   // Define the pages for the navigation bar
-  static const List<Widget> _pages = <Widget>[HomeScreen()];
+  static List<Widget> _pages = <Widget>[HomeScreen(), RecordingsScreen()];
 
   // This method is called when an item in the BottomNavigationBar is tapped
   void _onTapped(int index) {
@@ -36,8 +37,8 @@ class _NavBarState extends State<NavBar> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: Icon(Icons.record_voice_over),
+            label: 'Recordings',
           ),
         ],
         currentIndex: _selectedIndex, // Highlight the selected item
