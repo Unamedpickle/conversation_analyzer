@@ -40,7 +40,6 @@ class AudioRecordingService {
     return _filePath;
   }
 
-  // Dispose the recorder when it's no longer needed
   void dispose() {
     _recorder.closeRecorder();
     _isRecorderInitialized = false;

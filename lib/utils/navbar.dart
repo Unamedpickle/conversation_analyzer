@@ -1,7 +1,7 @@
+import 'package:conversation_analyzer/screens/recording_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../screens/home_screen.dart';
-import '../screens/recordings_screen.dart';
+import '../screens/saved_recordings_screen.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});
@@ -13,13 +13,23 @@ class NavBar extends StatefulWidget {
 class _NavBarState extends State<NavBar> {
   int _selectedIndex = 0;
 
+  final GlobalKey<SavedRecordingsScreenState> _recordingsKey =
+      GlobalKey<SavedRecordingsScreenState>();
+
   // Define the pages for the navigation bar
-  static List<Widget> _pages = <Widget>[HomeScreen(), RecordingsScreen()];
+  List<Widget> _pages() => <Widget>[
+        HomeScreen(),
+        SavedRecordingsScreen(key: _recordingsKey),
+        RecordingScreen(),
+      ];
 
   // This method is called when an item in the BottomNavigationBar is tapped
   void _onTapped(int index) {
     setState(() {
-      _selectedIndex = index; // Update the selected index
+      if (index == 1) {
+        _recordingsKey.currentState?.refreshRecordings();
+      }
+      _selectedIndex = index;
     });
   }
 
@@ -27,8 +37,8 @@ class _NavBarState extends State<NavBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(
-        index: _selectedIndex, // Show the selected page
-        children: _pages, // Pages to display in IndexedStack
+        index: _selectedIndex, // Specify the currently selected page
+        children: _pages(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -40,9 +50,13 @@ class _NavBarState extends State<NavBar> {
             icon: Icon(Icons.record_voice_over),
             label: 'Recordings',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mic),
+            label: 'Record',
+          ),
         ],
-        currentIndex: _selectedIndex, // Highlight the selected item
-        onTap: _onTapped, // Handle tap and update index
+        currentIndex: _selectedIndex,
+        onTap: _onTapped,
       ),
     );
   }
