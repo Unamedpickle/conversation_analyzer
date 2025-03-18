@@ -17,7 +17,7 @@ class AudioRecordingService {
       }
       // Get the directory to save the recording
       Directory directory = await getApplicationDocumentsDirectory();
-      _filePath = '${directory.path}/audio_recording.aac';
+      _filePath = '${directory.path}/audio_recording.wav';
 
       // Initialize the recorder
       await _recorder.openRecorder();
@@ -29,7 +29,7 @@ class AudioRecordingService {
     if (!_isRecorderInitialized) {
       await initRecorder();
     }
-    await _recorder.startRecorder(toFile: _filePath);
+    await _recorder.startRecorder(toFile: _filePath, codec: Codec.pcm16WAV);
     print("Recording Started");
   }
 

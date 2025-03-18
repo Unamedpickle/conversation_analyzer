@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import '../services/audio_transmission_service.dart';
 
 class SavedRecordingsScreen extends StatefulWidget {
   const SavedRecordingsScreen({Key? key}) : super(key: key);
@@ -11,7 +12,8 @@ class SavedRecordingsScreen extends StatefulWidget {
 
 class SavedRecordingsScreenState extends State<SavedRecordingsScreen> {
   List<FileSystemEntity> _audioFiles = [];
-
+  AudioTransmissionService audioTransmissionService =
+      AudioTransmissionService();
   @override
   void initState() {
     super.initState();
@@ -25,9 +27,9 @@ class SavedRecordingsScreenState extends State<SavedRecordingsScreen> {
     // List all files in the directory.
     List<FileSystemEntity> files = appDocDir.listSync();
 
-    // Filter for audio files with the .aac extension.
+    // Filter for audio files with the .wav extension.
     List<FileSystemEntity> audioFiles = files.where((file) {
-      return file.path.endsWith('.aac');
+      return file.path.endsWith('.wav');
     }).toList();
 
     setState(() {
@@ -54,6 +56,7 @@ class SavedRecordingsScreenState extends State<SavedRecordingsScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Uploading ${file.path.split('/').last}')),
     );
+    audioTransmissionService.sendAudioFile(file.path);
   }
 
   Future<void> _deleteRecording(FileSystemEntity file) async {

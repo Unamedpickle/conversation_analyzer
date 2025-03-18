@@ -100,8 +100,8 @@ class _RecordingScreenState extends State<RecordingScreen> {
                     return;
                   }
                   File oldFile = File(originalFilePath);
-                  // Create new file path in the same directory with .aac extension.
-                  String newPath = "${oldFile.parent.path}/$newName.aac";
+                  // Create new file path in the same directory with .wav extension.
+                  String newPath = "${oldFile.parent.path}/$newName.wav";
                   // Check for duplicates
                   if (await File(newPath).exists()) {
                     bool? override = await _showOverrideDialog();
