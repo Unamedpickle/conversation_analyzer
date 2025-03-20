@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:conversation_analyzer/services/audio_recording_service.dart';
 import 'package:flutter/material.dart';
-import '../services/audio_recording_service.dart'; // Ensure this file contains your AudioRecorder class
 
 class RecordingScreen extends StatefulWidget {
   const RecordingScreen({Key? key}) : super(key: key);
