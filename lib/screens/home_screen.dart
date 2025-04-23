@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar(title: Text('Report Summary')),
       body: ListView(
         padding: EdgeInsets.all(16),
         children: [
