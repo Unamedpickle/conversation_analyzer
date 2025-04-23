@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:audioplayers/audioplayers.dart';
 import '../services/audio_transmission_service.dart';
 
 class SavedRecordingsScreen extends StatefulWidget {
@@ -43,11 +44,12 @@ class SavedRecordingsScreenState extends State<SavedRecordingsScreen> {
   }
 
   // Stub function for preview. Replace with actual implementation.
-  void _previewRecording(FileSystemEntity file) {
-    // Example: Navigate to a playback screen or use an audio player package.
+  void _previewRecording(FileSystemEntity file) async {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Previewing ${file.path.split('/').last}')),
     );
+    final player = AudioPlayer();
+    await player.play(DeviceFileSource(file.path));
   }
 
   // Stub function for upload. Replace with actual implementation.
