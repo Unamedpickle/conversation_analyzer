@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:audioplayers/audioplayers.dart';
 import '../services/audio_transmission_service.dart';
+import '../config/routes.dart';
 
 class SavedRecordingsScreen extends StatefulWidget {
   const SavedRecordingsScreen({Key? key}) : super(key: key);
@@ -59,6 +60,7 @@ class SavedRecordingsScreenState extends State<SavedRecordingsScreen> {
       SnackBar(content: Text('Uploading ${file.path.split('/').last}')),
     );
     audioTransmissionService.sendAudioFile(file.path);
+    ApiRoutes.recent_audio_file = file.path.split('/').last;
   }
 
   Future<void> _deleteRecording(FileSystemEntity file) async {

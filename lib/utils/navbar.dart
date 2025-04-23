@@ -18,8 +18,8 @@ class _NavBarState extends State<NavBar> {
 
   // Define the pages for the navigation bar
   List<Widget> _pages() => <Widget>[
-        HomeScreen(),
         SavedRecordingsScreen(key: _recordingsKey),
+        HomeScreen(),
         RecordingScreen(),
       ];
 
@@ -43,12 +43,12 @@ class _NavBarState extends State<NavBar> {
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.record_voice_over),
             label: 'Recordings',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.report),
+            label: 'Reports',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.mic),

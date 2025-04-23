@@ -19,7 +19,7 @@ class AudioTransmissionService {
         },
       );
       if (response.statusCode == 200) {
-        return jsonDecode(response.body)['url'];
+        return 'Success';
       } else {
         throw Exception('Failed to upload audio file');
       }
